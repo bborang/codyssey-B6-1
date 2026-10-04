@@ -1,5 +1,6 @@
 -- SQLite에서는 외래 키 검사가 연결별로 꺼져 있을 수 있다.
 PRAGMA foreign_keys = ON;
+-- SQLite의 INTEGER PRIMARY KEY는 각 행의 rowid와 연결된다.
 
 -- 회원: 한 회원은 여러 대여 기록을 가질 수 있다.
 CREATE TABLE member (

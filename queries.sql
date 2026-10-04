@@ -14,6 +14,7 @@ WHERE category_id = 4
 ORDER BY id;
 
 -- Q03 | 기본 조회 | 가장 최근의 대여 기록 5건을 확인한다.
+-- SQLite의 LIMIT 5로 정렬된 결과를 5행으로 제한한다.
 SELECT id, member_id, book_id, rented_at, due_at, returned_at, rental_fee
 FROM rental
 ORDER BY rented_at DESC, id DESC
