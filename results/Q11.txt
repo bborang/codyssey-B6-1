@@ -1,0 +1,24 @@
+Q11 | 집계 | 카테고리별 대여료 평균을 확인한다.
+
+실행 SQL:
+SELECT c.id AS category_id, c.name AS category_name,
+       AVG(r.rental_fee) AS average_rental_fee
+FROM category AS c
+LEFT JOIN book AS b ON b.category_id = c.id
+LEFT JOIN rental AS r ON r.book_id = b.id
+GROUP BY c.id, c.name
+ORDER BY c.id;
+
+컬럼: category_id | category_name | average_rental_fee
+1 | 소설 | 1625.0
+2 | 과학 | 2000.0
+3 | 역사 | 1933.3333333333333
+4 | 프로그래밍 | 2633.3333333333335
+5 | 인문 | 1533.3333333333333
+6 | 경제 | 3100.0
+7 | 예술 | 2300.0
+8 | 여행 | 2300.0
+9 | 요리 | 1400.0
+10 | 건강 | 1250.0
+결과 10행
+상태: 실행 성공

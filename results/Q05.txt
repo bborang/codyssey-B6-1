@@ -1,0 +1,27 @@
+Q05 | 조인 | 도서명과 해당 카테고리명을 함께 확인한다.
+
+실행 SQL:
+SELECT b.id AS book_id, b.title, c.name AS category_name
+FROM book AS b
+INNER JOIN category AS c ON b.category_id = c.id
+ORDER BY b.id;
+
+컬럼: book_id | title | category_name
+1 | 밤의 서가 | 소설
+2 | 바람의 지도 | 소설
+3 | 작은 우주 | 과학
+4 | 일상의 물리 | 과학
+5 | 오래된 도시 | 역사
+6 | 바다의 교역 | 역사
+7 | 처음 배우는 SQL | 프로그래밍
+8 | 파이썬 기록 | 프로그래밍
+9 | 질문의 기술 | 인문
+10 | 생각의 산책 | 인문
+11 | 시장의 하루 | 경제
+12 | 색의 이야기 | 예술
+13 | 골목 여행 | 여행
+14 | 계절의 식탁 | 요리
+15 | 걷기의 습관 | 건강
+16 | 휴식 안내서 | 건강
+결과 16행
+상태: 실행 성공

@@ -1,0 +1,22 @@
+Q09 | 집계 | 대여 이력이 없는 회원을 0건으로 포함하여 회원별 건수를 센다.
+
+실행 SQL:
+SELECT m.id AS member_id, m.name AS member_name, COUNT(r.id) AS rental_count
+FROM member AS m
+LEFT JOIN rental AS r ON r.member_id = m.id
+GROUP BY m.id, m.name
+ORDER BY rental_count DESC, m.id;
+
+컬럼: member_id | member_name | rental_count
+1 | 가람 | 3
+2 | 나래 | 3
+3 | 다온 | 3
+4 | 라온 | 3
+5 | 마루 | 3
+6 | 보라 | 3
+7 | 새봄 | 2
+8 | 온유 | 2
+9 | 하람 | 2
+10 | 이든 | 0
+결과 10행
+상태: 실행 성공

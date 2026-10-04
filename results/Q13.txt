@@ -1,0 +1,16 @@
+Q13 | 서브쿼리 | 대여 기록이 한 건도 없는 회원을 찾는다.
+
+실행 SQL:
+SELECT m.id, m.name, m.email
+FROM member AS m
+WHERE NOT EXISTS (
+    SELECT 1
+    FROM rental AS r
+    WHERE r.member_id = m.id
+)
+ORDER BY m.id;
+
+컬럼: id | name | email
+10 | 이든 | member10@example.com
+결과 1행
+상태: 실행 성공

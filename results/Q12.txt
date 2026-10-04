@@ -1,0 +1,28 @@
+Q12 | 집계 | 대여 이력이 없는 도서를 포함하여 도서별 대여 횟수 순위를 확인한다.
+
+실행 SQL:
+SELECT b.id AS book_id, b.title, COUNT(r.id) AS rental_count
+FROM book AS b
+LEFT JOIN rental AS r ON r.book_id = b.id
+GROUP BY b.id, b.title
+ORDER BY rental_count DESC, b.id;
+
+컬럼: book_id | title | rental_count
+1 | 밤의 서가 | 2
+2 | 바람의 지도 | 2
+3 | 작은 우주 | 2
+5 | 오래된 도시 | 2
+7 | 처음 배우는 SQL | 2
+9 | 질문의 기술 | 2
+11 | 시장의 하루 | 2
+13 | 골목 여행 | 2
+15 | 걷기의 습관 | 2
+4 | 일상의 물리 | 1
+6 | 바다의 교역 | 1
+8 | 파이썬 기록 | 1
+10 | 생각의 산책 | 1
+12 | 색의 이야기 | 1
+14 | 계절의 식탁 | 1
+16 | 휴식 안내서 | 0
+결과 16행
+상태: 실행 성공

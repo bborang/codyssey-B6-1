@@ -1,0 +1,13 @@
+Q02 | 기본 조회 | 프로그래밍 카테고리(id 4)의 도서를 확인한다.
+
+실행 SQL:
+SELECT id, title, author, category_id
+FROM book
+WHERE category_id = 4
+ORDER BY id;
+
+컬럼: id | title | author | category_id
+7 | 처음 배우는 SQL | 박다온 | 4
+8 | 파이썬 기록 | 조하람 | 4
+결과 2행
+상태: 실행 성공

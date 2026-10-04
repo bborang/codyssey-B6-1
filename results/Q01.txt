@@ -1,0 +1,17 @@
+Q01 | 기본 조회 | 2026년에 가입한 회원을 확인한다.
+
+실행 SQL:
+SELECT id, name, email, joined_at
+FROM member
+WHERE joined_at >= '2026-01-01'
+ORDER BY joined_at, id;
+
+컬럼: id | name | email | joined_at
+5 | 마루 | member05@example.com | 2026-01-05
+6 | 보라 | member06@example.com | 2026-01-19
+7 | 새봄 | member07@example.com | 2026-02-02
+8 | 온유 | member08@example.com | 2026-02-18
+9 | 하람 | member09@example.com | 2026-03-01
+10 | 이든 | member10@example.com | 2026-04-10
+결과 6행
+상태: 실행 성공

@@ -1,0 +1,17 @@
+Q16 | 인덱스 | 회원별 대여 조회에서 member_id 검색을 돕는 인덱스를 만든다.
+
+실행 SQL:
+-- rental.member_id로 회원의 대여 기록을 찾을 때 전체 테이블 탐색을 줄일 수 있다.
+CREATE INDEX idx_rental_member_id ON rental (member_id);
+
+실행 성공 (반환 행 없음)
+상태: 실행 성공
+
+실행 SQL:
+-- SQLite 전용 PRAGMA: 실제로 생성된 rental 인덱스를 확인한다.
+PRAGMA index_list('rental');
+
+컬럼: seq | name | unique | origin | partial
+0 | idx_rental_member_id | 0 | c | 0
+결과 1행
+상태: 실행 성공

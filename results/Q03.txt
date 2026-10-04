@@ -1,0 +1,16 @@
+Q03 | 기본 조회 | 가장 최근의 대여 기록 5건을 확인한다.
+
+실행 SQL:
+SELECT id, member_id, book_id, rented_at, due_at, returned_at, rental_fee
+FROM rental
+ORDER BY rented_at DESC, id DESC
+LIMIT 5;
+
+컬럼: id | member_id | book_id | rented_at | due_at | returned_at | rental_fee
+24 | 6 | 2 | 2026-10-01 | 2026-10-15 | NULL | 1700
+23 | 5 | 15 | 2026-09-29 | 2026-10-13 | NULL | 1300
+22 | 4 | 13 | 2026-09-27 | 2026-10-11 | NULL | 2400
+21 | 3 | 11 | 2026-09-25 | 2026-10-09 | NULL | 3200
+20 | 2 | 9 | 2026-09-21 | 2026-10-05 | NULL | 1600
+결과 5행
+상태: 실행 성공

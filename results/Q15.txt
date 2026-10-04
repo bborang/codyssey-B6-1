@@ -1,0 +1,38 @@
+Q15 | 데이터 삭제 | 샘플 대여(id 24) 한 건을 삭제한다.
+
+실행 SQL:
+-- 보조 확인: 삭제 전 대상 행.
+SELECT id, member_id, book_id, rented_at, due_at, returned_at
+FROM rental
+WHERE id = 24;
+
+컬럼: id | member_id | book_id | rented_at | due_at | returned_at
+24 | 6 | 2 | 2026-10-01 | 2026-10-15 | NULL
+결과 1행
+상태: 실행 성공
+
+실행 SQL:
+DELETE FROM rental
+WHERE id = 24;
+
+변경된 행 수: 1
+상태: 실행 성공
+
+실행 SQL:
+-- SQLite 전용 changes(): 직전 DELETE로 삭제된 행 수.
+SELECT changes() AS deleted_rows;
+
+컬럼: deleted_rows
+1
+결과 1행
+상태: 실행 성공
+
+실행 SQL:
+-- 보조 확인: 삭제 후 대상이 사라졌는지 확인한다.
+SELECT id, member_id, book_id, rented_at, due_at, returned_at
+FROM rental
+WHERE id = 24;
+
+컬럼: id | member_id | book_id | rented_at | due_at | returned_at
+결과 0행
+상태: 실행 성공

@@ -1,0 +1,17 @@
+Q04 | 기본 조회 | 아직 반납하지 않은 대여 기록을 최근순으로 확인한다.
+
+실행 SQL:
+SELECT id, member_id, book_id, rented_at, due_at, rental_fee
+FROM rental
+WHERE returned_at IS NULL
+ORDER BY rented_at DESC, id DESC;
+
+컬럼: id | member_id | book_id | rented_at | due_at | rental_fee
+24 | 6 | 2 | 2026-10-01 | 2026-10-15 | 1700
+23 | 5 | 15 | 2026-09-29 | 2026-10-13 | 1300
+22 | 4 | 13 | 2026-09-27 | 2026-10-11 | 2400
+21 | 3 | 11 | 2026-09-25 | 2026-10-09 | 3200
+20 | 2 | 9 | 2026-09-21 | 2026-10-05 | 1600
+19 | 1 | 7 | 2026-09-18 | 2026-10-02 | 2800
+결과 6행
+상태: 실행 성공

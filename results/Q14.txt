@@ -1,0 +1,40 @@
+Q14 | 데이터 수정 | 미반납 대여(id 23) 한 건을 반납 완료로 바꾼다.
+
+실행 SQL:
+-- 보조 확인: 변경 전 대상 행.
+SELECT id, member_id, book_id, rented_at, due_at, returned_at
+FROM rental
+WHERE id = 23;
+
+컬럼: id | member_id | book_id | rented_at | due_at | returned_at
+23 | 5 | 15 | 2026-09-29 | 2026-10-13 | NULL
+결과 1행
+상태: 실행 성공
+
+실행 SQL:
+UPDATE rental
+SET returned_at = '2026-10-03'
+WHERE id = 23 AND returned_at IS NULL;
+
+변경된 행 수: 1
+상태: 실행 성공
+
+실행 SQL:
+-- SQLite 전용 changes(): 직전 UPDATE로 변경된 행 수.
+SELECT changes() AS updated_rows;
+
+컬럼: updated_rows
+1
+결과 1행
+상태: 실행 성공
+
+실행 SQL:
+-- 보조 확인: 변경 후 대상 행.
+SELECT id, member_id, book_id, rented_at, due_at, returned_at
+FROM rental
+WHERE id = 23;
+
+컬럼: id | member_id | book_id | rented_at | due_at | returned_at
+23 | 5 | 15 | 2026-09-29 | 2026-10-13 | 2026-10-03
+결과 1행
+상태: 실행 성공
