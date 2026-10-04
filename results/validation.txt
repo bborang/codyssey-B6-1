@@ -1,0 +1,29 @@
+B6-1 도서 대여 관리 실제 검증 결과
+대상 DB: practice.sqlite3
+SQLite 라이브러리 버전: 3.51.2
+
+[PASS] 시드 직후 행 수: {'member': 10, 'category': 10, 'book': 16, 'rental': 24}
+[PASS] 시드 연결 FK 활성화: PRAGMA foreign_keys=1
+[PASS] 시드 FK 위반: 위반 0건
+[PASS] 샘플 데이터 구성: 대여 없는 회원 1명, 도서 1권, 미반납 6건, 반납 18건
+[PASS] 여러 시점의 대여: 여러 건 대여한 회원 9명, 여러 번 대여된 도서 9권
+[PASS] 제약조건 실제 동작: 없는 FK 거부=True, NOT NULL 거부=True, UNIQUE 거부=True
+[PASS] 과제 DB 식별: application_id=46593
+[PASS] 테이블 4개: 실제 테이블=['book', 'category', 'member', 'rental']
+[PASS] 각 테이블의 PK: {'member': ['id'], 'category': ['id'], 'book': ['id'], 'rental': ['id']}
+[PASS] FK 3개와 1:N 관계: book.category_id -> category.id, rental.book_id -> book.id, rental.member_id -> member.id
+[PASS] NOT NULL 제약: book.title, category.name, member.email, member.name
+[PASS] UNIQUE 제약: category.name, member.email
+[PASS] 실행 DB FK 활성화와 무결성: foreign_keys=1, 위반=0건
+[PASS] 수정·삭제 후 행 수: {'member': 10, 'category': 10, 'book': 16, 'rental': 23}
+[PASS] 대여 날짜 순서: 모순 0건
+[PASS] Q01~Q16 범주별 개수: {'기본 조회': 4, '조인': 4, '집계': 4, '서브쿼리': 1, '데이터 수정': 1, '데이터 삭제': 1, '인덱스': 1}
+[PASS] 조인 종류: INNER JOIN 3개, LEFT JOIN 8개
+[PASS] 필수 SQL 구문: 모두 사용
+[PASS] Q01~Q16 결과 파일: 16개 존재
+[PASS] 결과 파일 내용: 번호·실행 SQL·성공 상태 확인
+[PASS] Q14 한 건 수정: 변경된 행 수=1, id 23 returned_at=2026-10-03
+[PASS] Q15 한 건 삭제: 삭제된 행 수=1, id 24 남은 행=0
+[PASS] Q16 인덱스 생성: 인덱스=['idx_rental_member_id'], 컬럼=['member_id']
+
+최종 결과: 모든 항목 통과
