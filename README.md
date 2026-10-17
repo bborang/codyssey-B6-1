@@ -15,12 +15,17 @@ queries.sql            Q01~Q16 핵심 SQL
 run.py                 새 DB 실행 및 결과 저장 보조 스크립트
 validate.py            요구사항 검증 보조 스크립트
 practice.sqlite3       실제 실행한 로컬 SQLite DB
+erd.svg                4개 테이블과 1:N 관계를 나타낸 ERD 이미지
 results/Q01.txt~Q16.txt 각 쿼리의 실제 SQL과 결과
 results/validation.txt 실제 검증 결과
 README.md              실행 방법과 설계 설명
 ```
 
 ## DB 설계
+
+![도서 대여 관리 ERD](erd.svg)
+
+그림의 `1`은 부모 행 하나, `N`은 연결될 수 있는 자식 행 여러 개를 뜻합니다. `PK`는 기본키, `FK`는 외래키, `UQ`는 중복 금지, `NN`은 필수 값입니다. 자세한 제약조건과 날짜 순서 검사는 `schema.sql`을 참고하세요.
 
 | 테이블 | 역할 | 주요 컬럼 |
 | --- | --- | --- |

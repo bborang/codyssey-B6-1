@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1250" height="1010" viewBox="0 0 1250 1010" role="img" aria-labelledby="title desc">
+  <title id="title">도서 대여 관리 데이터베이스 ERD</title>
+  <desc id="desc">category와 book, member와 rental, book과 rental이 각각 일대다 관계로 연결된 네 테이블의 컬럼과 키를 보여준다.</desc>
+  <defs>
+    <filter id="shadow" x="-15%" y="-15%" width="130%" height="140%">
+      <feDropShadow dx="0" dy="5" stdDeviation="9" flood-color="#0f172a" flood-opacity="0.10"/>
+    </filter>
+    <style>
+      .sans { font-family: "Pretendard", "Apple SD Gothic Neo", "Noto Sans KR", Arial, sans-serif; }
+      .name { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 20px; fill: #0f172a; }
+      .type { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 16px; fill: #475569; text-anchor: end; }
+      .rule { stroke: #e2e8f0; stroke-width: 1; }
+      .edge { fill: none; stroke: #64748b; stroke-width: 3; stroke-linecap: round; }
+      .card { fill: #ffffff; stroke: #dbe4ee; stroke-width: 1.5; filter: url(#shadow); }
+      .badge { fill: #ffffff; stroke: #64748b; stroke-width: 2; }
+      .badge-text { font-family: Arial, sans-serif; font-size: 16px; font-weight: 700; fill: #334155; text-anchor: middle; dominant-baseline: central; }
+    </style>
+  </defs>
+
+  <rect width="1250" height="1010" fill="#f8fafc"/>
+  <text x="65" y="67" class="sans" font-size="36" font-weight="700" fill="#0f172a">도서 대여 관리 ERD</text>
+  <text x="65" y="105" class="sans" font-size="18" fill="#475569">4개 테이블 · 3개 외래키 · 3개의 1:N 관계</text>
+
+  <!-- 관계선: 부모 쪽 1, 자식 쪽 N -->
+  <path class="edge" d="M 510 255 H 740"/>
+  <path class="edge" d="M 510 670 H 740"/>
+  <path class="edge" d="M 963 420 V 535"/>
+
+  <!-- category -->
+  <rect class="card" x="65" y="150" width="445" height="185" rx="18"/>
+  <path d="M 83 150 H 492 Q 510 150 510 168 V 208 H 65 V 168 Q 65 150 83 150 Z" fill="#0f766e"/>
+  <text x="90" y="187" class="sans" font-size="24" font-weight="700" fill="#ffffff">category</text>
+  <text x="485" y="186" class="sans" font-size="16" fill="#d1fae5" text-anchor="end">도서 분류</text>
+  <text x="90" y="251" class="name">id</text>
+  <text x="485" y="251" class="type">INTEGER · PK</text>
+  <line x1="90" y1="267" x2="485" y2="267" class="rule"/>
+  <text x="90" y="300" class="name">name</text>
+  <text x="485" y="300" class="type">TEXT · UQ · NN</text>
+
+  <!-- book -->
+  <rect class="card" x="740" y="150" width="445" height="270" rx="18"/>
+  <path d="M 758 150 H 1167 Q 1185 150 1185 168 V 208 H 740 V 168 Q 740 150 758 150 Z" fill="#2563eb"/>
+  <text x="765" y="187" class="sans" font-size="24" font-weight="700" fill="#ffffff">book</text>
+  <text x="1160" y="186" class="sans" font-size="16" fill="#dbeafe" text-anchor="end">도서</text>
+  <text x="765" y="251" class="name">id</text>
+  <text x="1160" y="251" class="type">INTEGER · PK</text>
+  <line x1="765" y1="267" x2="1160" y2="267" class="rule"/>
+  <text x="765" y="300" class="name">title</text>
+  <text x="1160" y="300" class="type">TEXT · NN</text>
+  <line x1="765" y1="316" x2="1160" y2="316" class="rule"/>
+  <text x="765" y="349" class="name">author</text>
+  <text x="1160" y="349" class="type">TEXT</text>
+  <line x1="765" y1="365" x2="1160" y2="365" class="rule"/>
+  <text x="765" y="398" class="name">category_id</text>
+  <text x="1160" y="398" class="type">INTEGER · FK · NN</text>
+
+  <!-- member -->
+  <rect class="card" x="65" y="535" width="445" height="265" rx="18"/>
+  <path d="M 83 535 H 492 Q 510 535 510 553 V 593 H 65 V 553 Q 65 535 83 535 Z" fill="#7c3aed"/>
+  <text x="90" y="572" class="sans" font-size="24" font-weight="700" fill="#ffffff">member</text>
+  <text x="485" y="571" class="sans" font-size="16" fill="#ede9fe" text-anchor="end">회원</text>
+  <text x="90" y="636" class="name">id</text>
+  <text x="485" y="636" class="type">INTEGER · PK</text>
+  <line x1="90" y1="652" x2="485" y2="652" class="rule"/>
+  <text x="90" y="685" class="name">name</text>
+  <text x="485" y="685" class="type">TEXT · NN</text>
+  <line x1="90" y1="701" x2="485" y2="701" class="rule"/>
+  <text x="90" y="734" class="name">email</text>
+  <text x="485" y="734" class="type">TEXT · UQ · NN</text>
+  <line x1="90" y1="750" x2="485" y2="750" class="rule"/>
+  <text x="90" y="783" class="name">joined_at</text>
+  <text x="485" y="783" class="type">TEXT · NN</text>
+
+  <!-- rental -->
+  <rect class="card" x="740" y="535" width="445" height="402" rx="18"/>
+  <path d="M 758 535 H 1167 Q 1185 535 1185 553 V 593 H 740 V 553 Q 740 535 758 535 Z" fill="#be185d"/>
+  <text x="765" y="572" class="sans" font-size="24" font-weight="700" fill="#ffffff">rental</text>
+  <text x="1160" y="571" class="sans" font-size="16" fill="#fce7f3" text-anchor="end">대여 기록</text>
+  <text x="765" y="636" class="name">id</text>
+  <text x="1160" y="636" class="type">INTEGER · PK</text>
+  <line x1="765" y1="652" x2="1160" y2="652" class="rule"/>
+  <text x="765" y="685" class="name">member_id</text>
+  <text x="1160" y="685" class="type">INTEGER · FK · NN</text>
+  <line x1="765" y1="701" x2="1160" y2="701" class="rule"/>
+  <text x="765" y="734" class="name">book_id</text>
+  <text x="1160" y="734" class="type">INTEGER · FK · NN</text>
+  <line x1="765" y1="750" x2="1160" y2="750" class="rule"/>
+  <text x="765" y="783" class="name">rented_at</text>
+  <text x="1160" y="783" class="type">TEXT · NN</text>
+  <line x1="765" y1="799" x2="1160" y2="799" class="rule"/>
+  <text x="765" y="832" class="name">due_at</text>
+  <text x="1160" y="832" class="type">TEXT · NN</text>
+  <line x1="765" y1="848" x2="1160" y2="848" class="rule"/>
+  <text x="765" y="881" class="name">returned_at</text>
+  <text x="1160" y="881" class="type">TEXT · NULL 허용</text>
+  <line x1="765" y1="897" x2="1160" y2="897" class="rule"/>
+  <text x="765" y="916" class="name" font-size="18">rental_fee</text>
+  <text x="1160" y="916" class="type">INTEGER · NN</text>
+
+  <!-- 관계의 양 끝에 1과 N 표시 -->
+  <circle cx="545" cy="255" r="18" class="badge"/>
+  <text x="545" y="255" class="badge-text">1</text>
+  <circle cx="705" cy="255" r="18" class="badge"/>
+  <text x="705" y="255" class="badge-text">N</text>
+  <text x="625" y="232" class="sans" font-size="15" fill="#475569" text-anchor="middle">분류별 여러 도서</text>
+
+  <circle cx="545" cy="670" r="18" class="badge"/>
+  <text x="545" y="670" class="badge-text">1</text>
+  <circle cx="705" cy="670" r="18" class="badge"/>
+  <text x="705" y="670" class="badge-text">N</text>
+  <text x="625" y="647" class="sans" font-size="15" fill="#475569" text-anchor="middle">회원별 여러 대여</text>
+
+  <circle cx="963" cy="447" r="18" class="badge"/>
+  <text x="963" y="447" class="badge-text">1</text>
+  <circle cx="963" cy="508" r="18" class="badge"/>
+  <text x="963" y="508" class="badge-text">N</text>
+  <text x="989" y="483" class="sans" font-size="15" fill="#475569">도서별 여러 대여</text>
+
+  <text x="65" y="973" class="sans" font-size="17" fill="#475569">PK 기본키   ·   FK 외래키   ·   UQ 중복 금지(UNIQUE)   ·   NN 필수 값(NOT NULL)</text>
+</svg>
